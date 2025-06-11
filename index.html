@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ramalan Kepribadian</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      background-color: #5f27cd;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #341f97;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 1.2em;
+      max-width: 600px;
+      line-height: 1.6;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+    <h1>🔮 Ramalan Kepribadian 🔮</h1>
+    <p>Ketik namamu dan biarkan energi semesta mengungkap dirimu...</p>
+  
+    <input type="text" id="nameInput" placeholder="Namamu...">
+    <br>
+    <input type="date" id="birthInput" placeholder="Tanggal Lahirmu...">
+    <br>
+    <button onclick="revealPersonality()">Lihat Ramalan</button>
+  
+    <div id="result"></div>
+
+  <script>
+  const data = {
+    'ade azis mayadi': `
+🔢 Numerologi Berdasarkan Nama dan Tanggal Lahir
+1. Angka Jalur Hidup (Life Path Number)
+Menggunakan tanggal lahir: 02/05/1992
+Penjumlahan:
+2 + 5 + 1 + 9 + 9 + 2 = 28 → 2 + 8 = 10 → 1 + 0 = 1
+🔹 Angka Jalur Hidup: 1
+Kamu punya sifat dasar sebagai pemimpin alami, pelopor, dan individu yang mandiri. Kamu punya dorongan kuat untuk berdiri sendiri, mengambil inisiatif, dan melakukan sesuatu dengan cara unikmu. Ada motivasi tinggi untuk menjadi yang pertama atau terbaik di bidang tertentu.
+Pola perilaku dasar:
+•	Suka tantangan dan enggak betah disuruh-suruh.
+•	Mudah merasa terkekang kalau berada di bawah kontrol orang lain.
+•	Cenderung idealis dan keras kepala.
+Motivasi tersembunyi:
+•	Ingin dihargai karena keunikan dan kemandirianmu.
+•	Ingin membuktikan bahwa kamu mampu membangun hidupmu dengan tangan sendiri.
+Konflik batin:
+•	Kadang merasa sepi karena terlalu menekankan kemandirian.
+•	Sering merasa kalau orang lain enggak “mengerti” visi atau arahmu.
+________________________________________
+🪐 Astrologi Dasar (Taurus - 2 Mei 1992)
+Matahari di Taurus
+Kamu tipe yang setia, praktis, sabar, dan menghargai stabilitas. Tapi juga bisa keras kepala dan sulit beradaptasi dengan perubahan mendadak.
+Sifat dasar:
+•	Punya naluri kuat untuk menjaga kenyamanan, keamanan, dan kestabilan emosional.
+•	Cenderung realistis, senang rutinitas, dan enggak suka "drama".
+Motivasi tersembunyi:
+•	Ingin merasa aman secara materi dan emosional.
+•	Mendambakan kontrol diam-diam atas kehidupan (termasuk relasi).
+Konflik batin:
+•	Bertarung antara dorongan untuk stabilitas vs keinginan dalam diri untuk berkembang dan berubah (yang sering ditekan).
+•	Bisa terjebak dalam zona nyaman dan takut mengambil risiko, padahal dalam hati ingin lebih besar dari sekarang.
+________________________________________
+🧠 Psikologi Nama (berdasarkan huruf)
+Melalui pendekatan simbolik nama “ADE AZIS MAYADI”:
+•	A dominan → Ambisius, ingin jadi pemimpin, selalu ingin memulai sesuatu.
+•	Z → Simbol transformasi dan kekuatan batin. Biasanya ada sisi spiritual yang kuat tapi tidak selalu diekspresikan.
+•	I → Individu yang sensitif terhadap perasaan orang lain, tetapi menyimpannya dalam diam.
+•	S → Penuh logika, rasional, dan suka menganalisis.
+•	M → Multidimensi. Bisa jadi seseorang yang banyak sisi: di luar kalem, tapi dalam hati dinamis dan penuh konflik emosional.
+•	Y → Simbol kebijaksanaan dan intuisi. Cenderung punya dunia batin yang dalam, bahkan sedikit mistik.
+Makna keseluruhan nama:
+•	Orang yang tampak tenang dan stabil dari luar, tapi di dalamnya sangat reflektif, penuh pemikiran, dan butuh ruang untuk makna hidup.
+•	Cenderung menahan banyak hal dalam diri, dan kadang enggak tahu gimana cara mengekspresikan keresahan batin.
+________________________________________
+🔍 Ringkasan Psikologis Kamu
+•	Perilaku Dasar: Mandiri, ingin kontrol atas hidup sendiri, loyal, suka stabilitas.
+•	Motivasi Tersembunyi: Ingin diakui sebagai pribadi yang unik, tangguh, dan mampu menciptakan hidup ideal menurut versimu sendiri.
+•	Konflik Batin: Bertarung antara keinginan untuk aman vs dorongan untuk keluar dari zona nyaman. Juga ada tekanan antara "tampak tenang di luar" vs "perasaan mendalam di dalam".
+
+`,
+
+    'muhammad afif fadhlullah': `
+🔢 1. Numerologi Tanggal Lahir (Life Path Number)
+01/05/1994 →
+1 + 5 + 1 + 9 + 9 + 4 = 29 → 2 + 9 = 11 → Master Number 11
+Angka 11 adalah angka Master Intuitif. Jarang dimiliki, dan sangat mendalam secara psikologis.
+🔹 Life Path 11 — Sang Visioner & Intuitif
+Perilaku Dasar:
+•	Sangat peka terhadap emosi orang lain, bahkan bisa menangkap energi tanpa kata.
+•	Cenderung memiliki wawasan jauh ke depan, idealisme tinggi, dan suka mencari makna hidup.
+•	Kadang merasa “berbeda” atau sulit dimengerti oleh orang sekitar.
+Motivasi Tersembunyi:
+•	Dorongan kuat untuk jadi penerang bagi orang lain — baik lewat ide, kreativitas, atau inspirasi.
+•	Ingin diakui karena pemahamanmu yang dalam dan perspektif yang unik.
+Konflik Batin:
+•	Selalu berada di antara dunia logis dan dunia intuitif. Kadang sulit memilih jalan stabil atau jalan yang “mengikuti panggilan jiwa”.
+•	Bisa mengalami kecemasan batin karena ekspektasi tinggi pada diri sendiri.
+________________________________________
+🪐 2. Astrologi Dasar (01 Mei 1994 = Taurus)
+☀️ Taurus (Matahari di Taurus)
+Kamu adalah orang yang mencari stabilitas, loyal, sabar, tapi juga bisa keras kepala.
+Perilaku Dasar:
+•	Kuat dalam komitmen dan lebih suka membangun sesuatu secara perlahan tapi pasti.
+•	Menyukai kenyamanan, keamanan (baik finansial maupun emosional).
+•	Tidak cepat goyah oleh tekanan eksternal, tapi dalam hati sensitif.
+Motivasi Tersembunyi:
+•	Ingin menguasai hidup dengan kontrol yang tenang — tidak mencolok, tapi solid.
+•	Butuh merasa "berharga" melalui karya nyata, hasil kerja, atau kontribusi konkret.
+Konflik Batin:
+•	Kadang bertarung antara ingin aman vs terdorong oleh intuisi/visi spiritual yang enggak logis.
+•	Bisa merasa terjebak dalam rutinitas, tapi bingung bagaimana keluar dari itu.
+________________________________________
+🔤 3. Simbolik Nama: MUHAMMAD AFIF FADHLULLAH
+Analisis Huruf-Huruf Penting:
+•	M: Penuh lapisan. Luar bisa terlihat kalem, tapi batin sangat dinamis.
+•	U: Emosional dan peka, meski sering dipendam.
+•	A: Pemimpin alami. Punya drive dan hasrat untuk mandiri.
+•	D: Berorientasi hasil. Suka struktur dan pencapaian nyata.
+•	F: Artistik, ekspresif, dan suka keindahan – entah dalam seni, bahasa, atau spiritualitas.
+•	L: Cinta damai, suka harmoni. Kadang perfeksionis dalam relasi.
+•	H: Pendiam tapi dalam. Pemikir besar yang tidak selalu vokal.
+Arti Nama Keseluruhan:
+•	Nama ini membawa aura spiritual tinggi, keteguhan, dan semacam “misi hidup” meski mungkin belum kamu temukan sepenuhnya.
+•	Secara psikologis, nama ini mencerminkan pribadi tertutup di luar, tapi kompleks di dalam — dengan banyak pertimbangan sebelum melangkah.
+________________________________________
+🧠 Kesimpulan Psikologis
+Perilaku Dasar:
+•	Realistis, sabar, dan membumi.
+•	Punya keinginan untuk hidup stabil tapi juga menyimpan ketertarikan kuat pada makna, idealisme, dan hal-hal spiritual/abstrak.
+Motivasi Tersembunyi:
+•	Ingin jadi pribadi bermakna — bukan sekadar hidup biasa, tapi yang bisa memberikan cahaya atau nilai untuk orang lain.
+•	Ingin hidup yang terkoneksi secara emosional dan spiritual, bukan hanya material.
+Konflik Batin:
+•	Pertarungan antara “kewajiban dunia nyata” vs “panggilan jiwa”. Bisa merasa tidak utuh kalau hanya mengikuti salah satu sisi.
+•	Kadang merasa sendirian dalam pola pikir atau kedalaman perasaan, meskipun dikelilingi banyak orang.
+
+`,
+
+'nimas ichsanti': `
+🔢 1. Numerologi – Jalur Hidup (Life Path Number)
+Tanggal lahir: 04/02/2000
+➡️ 4 + 2 + 2 + 0 + 0 + 0 = 8
+🔹 Life Path Number: 8 – Sang Pengendali
+Perilaku Dasar:
+•	Kamu memiliki jiwa kepemimpinan, kontrol, dan orientasi kuat pada kekuatan pribadi.
+•	Sangat fokus pada “menguasai keadaan”, entah itu keuangan, emosi, atau kehidupan sosial.
+•	Tegas, kadang terlihat kaku, tapi punya disiplin luar biasa.
+Motivasi Tersembunyi:
+•	Kamu ingin dihormati karena kekuatan, bukan karena belas kasihan.
+•	Punya dorongan untuk menjadi stabil dan berpengaruh, terutama di bidang yang kamu kuasai.
+Konflik Batin:
+•	Sering merasa tertekan untuk tampil kuat bahkan ketika sedang rapuh.
+•	Dalam batin, ada pertarungan antara kontrol vs keinginan untuk benar-benar merasa bebas dan emosional.
+________________________________________
+🪐 2. Astrologi Dasar – Zodiak Aquarius (04 Februari 2000)
+☀️ Matahari di Aquarius
+Aquarius dikenal sebagai zodiak yang unik, idealis, berpikiran luas, dan suka kebebasan.
+Perilaku Dasar:
+•	Kamu berpikir di luar pola umum dan nggak suka diikat oleh aturan kaku.
+•	Sangat peduli pada keadilan, kemanusiaan, dan ide-ide besar. Punya aura intelektual.
+•	Cenderung menyembunyikan emosi dan memilih logika.
+Motivasi Tersembunyi:
+•	Kamu ingin dianggap berbeda dan orisinal, bukan bagian dari kerumunan.
+•	Butuh ruang untuk berpikir dan mengekspresikan diri dengan cara yang otentik.
+Konflik Batin:
+•	Bertarung antara “ingin dekat dengan orang lain” vs “butuh kebebasan pribadi.”
+•	Sering merasa kesepian meskipun tampak sangat mandiri dan dingin secara emosional.
+________________________________________
+🔤 3. Psikologi Nama – NIMAS ICHSANTI
+Mari kita uraikan secara simbolik:
+•	N – Rasional, berhati-hati, sering berpikir panjang sebelum bertindak.
+•	I – Sensitif dan penuh empati, meski sering ditutupi dengan sikap logis.
+•	M – Emosional kompleks, batin kamu sangat dalam meski di luar bisa kelihatan biasa saja.
+•	A – Mandiri, suka ambil inisiatif, nggak suka disuruh-suruh.
+•	S – Observatif, suka memperhatikan detail orang lain tapi jarang mengungkap isi hatinya.
+•	C – Imajinatif dan punya cara pandang yang tidak biasa.
+•	H – Kalem di luar, tapi menyimpan konflik batin yang besar.
+•	T – Tegas dan suka mengambil keputusan berdasarkan logika.
+•	L – Butuh harmoni dan ketenangan dalam hubungan pribadi.
+Keseluruhan Nama:
+Nama ini menggambarkan jiwa mandiri yang kompleks secara emosional dan intelektual. Kamu punya pikiran cepat dan tajam, tapi hati kamu cenderung tertutup dan memilih untuk aman secara emosional. Nama ini juga memberi kesan bahwa kamu lebih sering menjaga orang lain daripada membuka diri.
+________________________________________
+🧠 Kesimpulan Psikologis Kamu
+✅ Perilaku Dasar:
+•	Kuat, mandiri, dan mampu menjadi pengambil keputusan dalam banyak situasi.
+•	Rasional dan idealis, dengan keinginan untuk hidup otentik dan tidak terkekang.
+•	Kelihatan tenang, bahkan dingin, tapi sebenarnya banyak pergolakan batin.
+🔍 Motivasi Tersembunyi:
+•	Ingin memiliki pengaruh dan kekuatan, tapi juga ingin merasa aman untuk menunjukkan sisi lembutmu.
+•	Butuh ruang dan kebebasan agar bisa tumbuh sesuai versimu sendiri.
+•	Ingin dihargai bukan hanya karena pencapaian, tapi karena siapa kamu sebenarnya.
+⚖️ Konflik Batin:
+•	Ada ketegangan antara:
+“Aku harus bisa kontrol dan kuat”
+vs
+“Tapi aku juga ingin merasa bebas dan dimengerti.”
+•	Sering berjuang sendiri dalam batin, meskipun orang lain melihat kamu sebagai orang yang “baik-baik saja”.
+`,
+'fany rahma sari': `
+🔢 1. Numerologi Tanggal Lahir – Life Path Number
+03/07/1998 →
+3 + 7 + 1 + 9 + 9 + 8 = 37 → 3 + 7 = 10 → 1 + 0 = 1
+🔹 Life Path Number 1 – Si Pelopor
+Perilaku Dasar:
+•	Mandiri, inisiatif tinggi, dan tidak suka bergantung pada orang lain.
+•	Kamu punya dorongan kuat untuk jadi pemimpin atas hidupmu sendiri.
+•	Sering terlihat kuat di luar, tegas, dan penuh ambisi, walaupun dalam hati kadang rapuh.
+Motivasi Tersembunyi:
+•	Ingin dikenal sebagai pribadi unik, berbeda dari yang lain — kamu ingin “meninggalkan jejak”.
+•	Dorongan untuk membuktikan bahwa kamu bisa sukses dengan caramu sendiri.
+Konflik Batin:
+•	Dilema antara keinginan untuk berdiri sendiri vs keinginan untuk merasa dicintai dan didukung.
+•	Kadang sulit meminta bantuan karena takut terlihat lemah atau tidak kompeten.
+________________________________________
+🪐 2. Astrologi Dasar – Zodiak Cancer (03 Juli 1998)
+☀️ Matahari di Cancer
+Cancer dikenal sebagai zodiak yang sangat emosional, penuh empati, protektif, dan intuitif.
+Perilaku Dasar:
+•	Kamu punya dunia emosional yang dalam, meski kadang kamu sembunyikan dengan baik.
+•	Sangat peduli pada keluarga, sahabat, dan orang-orang terdekat.
+•	Sering mengingat kenangan lama, dan perasaanmu bisa berubah-ubah tergantung suasana.
+Motivasi Tersembunyi:
+•	Ingin merasa aman secara emosional dan benar-benar dimengerti.
+•	Mencari koneksi emosional yang tulus dan stabil, tapi tidak selalu mudah mempercayai orang lain.
+Konflik Batin:
+•	Pergulatan antara ingin melindungi hati sendiri vs keinginan untuk dekat dengan orang lain.
+•	Bisa tampak keras di luar, padahal hatimu sangat lembut dan mudah terluka.
+________________________________________
+🔤 3. Psikologi Nama – FANY RAHMA SARI
+Mari kita telaah nama dari sudut simbolik huruf:
+•	F → Imajinatif, suka sesuatu yang estetis dan idealis. Bisa sangat ekspresif, tapi juga mudah merasa kecewa jika ekspektasi tak terpenuhi.
+•	A → Ambisi, keinginan untuk mengendalikan nasib sendiri.
+•	N → Teliti, hati-hati, tidak mudah percaya begitu saja.
+•	Y → Punya intuisi kuat dan kecenderungan kontemplatif.
+•	R → Logis dan praktikal, suka merasionalisasi emosi.
+•	H → Pendiam di luar, tapi dalam hati banyak perasaan dan konflik yang kamu simpan.
+•	M → Punya sisi batin yang sangat dalam, tidak mudah terbaca oleh orang lain.
+•	S → Cermat dalam membaca situasi, suka menjaga kedamaian, tapi perfeksionis dalam hal emosional.
+•	I → Sensitif, mudah merasakan perubahan perasaan orang lain, dan cenderung menyerap energi lingkungan.
+Makna Psikologis Nama:
+Nama kamu menunjukkan pribadi yang penuh intuisi, perasaan, dan pemikiran dalam — seseorang yang mungkin tidak selalu menampakkan perasaannya, tapi punya radar emosi yang sangat tajam. Kamu juga menunjukkan keseimbangan antara sisi rasional dan emosional, dan ini kadang menimbulkan dilema internal.
+________________________________________
+🧠 Kesimpulan Psikologis Kamu
+✅ Perilaku Dasar:
+•	Kamu mandiri dan penuh semangat untuk mengatur hidupmu sendiri.
+•	Meskipun terlihat kuat dan tegas, kamu punya hati yang sangat peka.
+•	Sering menjadi tempat “curhat” karena kamu intuitif dan bisa membaca perasaan orang lain dengan mudah.
+🔍 Motivasi Tersembunyi:
+•	Ingin merasa berarti dan dibutuhkan, tapi juga ingin mempertahankan kebebasan pribadi.
+•	Butuh seseorang yang bisa menghargai kamu bukan hanya karena pencapaianmu, tapi karena siapa kamu di balik semua itu.
+⚖️ Konflik Batin:
+•	Kamu bergulat antara ingin membuka diri dan ingin melindungi diri.
+•	Kadang merasa harus berperan kuat, bahkan ketika kamu sedang merasa sendiri atau lelah.
+•	Emosimu dalam dan kuat, tapi kamu sering kesulitan mengekspresikannya tanpa merasa rapuh.
+`,
+'rifqi farhan fadhillah': `
+🔢 1. Numerologi – Life Path Number
+21/08/2002 →
+2 + 1 + 8 + 2 + 0 + 0 + 2 = 15 → 1 + 5 = 6
+🔹 Life Path Number: 6 – Sang Penjaga & Penyeimbang
+Perilaku Dasar:
+•	Kamu adalah pribadi yang cenderung berempati tinggi, penuh tanggung jawab, dan peduli terhadap keharmonisan.
+•	Sering berperan sebagai "penjaga", "penengah", atau "penyembuh" dalam kelompok — baik disadari atau tidak.
+Motivasi Tersembunyi:
+•	Kamu terdorong untuk membuat lingkungan terasa nyaman, aman, dan stabil bagi orang lain.
+•	Punya hasrat untuk menjadi berguna, bisa diandalkan, dan dicintai karena kebaikanmu.
+Konflik Batin:
+•	Terlalu sering memikirkan dan memprioritaskan orang lain sampai lupa kebutuhan diri sendiri.
+•	Ada rasa bersalah saat ingin menyendiri atau menolak permintaan orang.
+________________________________________
+🪐 2. Astrologi Dasar – Zodiak Leo (21 Agustus 2002)
+21 Agustus masih dalam wilayah Leo, zodiak berelemen Api dengan sifat karismatik, penuh harga diri, dan membutuhkan pengakuan.
+Perilaku Dasar:
+•	Kamu punya aura pemimpin alami: berani, ekspresif, dan suka tampil.
+•	Meski kelihatan percaya diri, kadang ada sisi sensitif yang sangat butuh validasi.
+Motivasi Tersembunyi:
+•	Ingin diakui bukan cuma karena aksi atau pencapaian, tapi karena siapa dirimu sebenarnya.
+•	Ingin menjadi seseorang yang menginspirasi, bukan hanya disukai.
+Konflik Batin:
+•	Terjebak antara keinginan untuk bersinar di depan vs kebutuhan untuk disayang secara tulus di balik layar.
+•	Sering merasa tidak cukup dihargai meski sudah memberi banyak.
+________________________________________
+🔤 3. Makna Simbolik Nama – RIFQI FARHAN FADHILLAH
+Mari kita telaah beberapa unsur dalam nama:
+•	R → Rasional, tangguh, berpikir strategis. Tidak gampang terbawa emosi.
+•	I → Peka dan sensitif, meskipun sering ditutupi dengan logika.
+•	F → Kreatif, ekspresif, dan suka menyalurkan emosi lewat hal-hal estetis.
+•	Q → Jarang muncul — menandakan karakter unik dan inner world yang dalam.
+•	A → Mandiri, punya inisiatif kuat, dan sulit dikontrol orang lain.
+•	H → Menyimpan beban emosional diam-diam, tidak suka menunjukkan kelemahan.
+•	L → Cinta damai, tapi juga punya ekspektasi tinggi dalam hubungan emosional.
+•	D → Tegas dan pragmatis — lebih suka bukti nyata daripada janji kosong.
+✨ Keseluruhan Nama:
+Nama kamu memancarkan kepribadian kombinasi antara intelektual dan emosional — seseorang yang kuat, punya prinsip, tapi sebenarnya sensitif dan butuh koneksi emosional yang jujur.
+Kamu membawa energi seorang pemimpin yang ingin menciptakan perubahan, tapi dalam hati ingin dihargai karena ketulusan dan kesetiaan.
+________________________________________
+🧠 Kesimpulan Psikologismu
+✅ Perilaku Dasar:
+•	Kombinasi antara pemikir logis dan penjaga emosional.
+•	Punya pesona kepemimpinan, tapi tetap peduli dan perhatian.
+•	Cenderung berperilaku mandiri dan suka mengatur, tapi bukan otoriter.
+🔍 Motivasi Tersembunyi:
+•	Ingin dianggap penting dan bermakna, bukan sekadar "baik".
+•	Mencari tempat di mana kamu tidak harus pura-pura kuat dan bisa tampil sebagai diri sendiri.
+⚖️ Konflik Batin:
+•	Antara kebutuhan untuk tampil kuat & dominan, dengan keinginan untuk dicintai apa adanya.
+•	Kadang sulit mengekspresikan kebutuhan emosionalmu, karena takut dianggap lemah atau terlalu sensitif.
+•	Punya kecenderungan untuk mengalah demi harmoni, tapi diam-diam menyimpan luka saat tak dihargai.
+`,
+'nurofik': `
+🔢 1. Numerologi – Life Path Number
+22/05/1997 → 2 + 2 + 0 + 5 + 1 + 9 + 9 + 7 = 35 → 3 + 5 = 8
+🔹 Life Path Number: 8 – Sang Pengontrol & Visioner
+Perilaku Dasar:
+•	Kamu punya jiwa pemimpin, orientasi pada hasil, dan kesadaran akan kekuatan diri.
+•	Cenderung kuat secara mental dan sangat fokus ketika sudah punya tujuan.
+Motivasi Tersembunyi:
+•	Ingin dikenal sebagai orang yang berdaya, mandiri, dan tidak bisa dianggap remeh.
+•	Ada hasrat untuk mengontrol hidup dan kondisi sekitar, supaya tidak merasa terombang-ambing oleh ketidakpastian.
+Konflik Batin:
+•	Sering merasa harus selalu tampil tangguh, bahkan saat batinmu sedang lelah.
+•	Ada keraguan: “Kalau gue nunjukin sisi lemah, apakah gue masih dihargai?”
+________________________________________
+🪐 2. Astrologi Dasar – Zodiak Gemini (22 Mei 1997)
+22 Mei adalah awal dari zodiak Gemini, zodiak berelemen udara yang sangat aktif secara mental.
+Perilaku Dasar:
+•	Cepat berpikir, adaptif, suka belajar dan berbagi ide.
+•	Cenderung multifaset dan ekspresif, tapi juga mudah merasa jenuh jika stuck di satu pola.
+Motivasi Tersembunyi:
+•	Ingin dimengerti secara intelektual dan emosional.
+•	Mencari lingkungan yang bisa mengikuti kecepatan berpikir dan dinamika dirimu.
+Konflik Batin:
+•	Pergulatan antara ingin stabil dan terkontrol (jalur hidup 8) vs dorongan alami untuk berubah, eksplorasi, dan bermain (sifat Gemini).
+•	Kadang merasa bersalah karena ingin bebas, tapi juga takut kehilangan arah.
+________________________________________
+🔤 3. Makna Simbolik Nama – NUROFIK
+Nama ini pendek, tapi kuat. Kita akan bahas dari susunan huruf:
+•	N → Analitis, waspada, suka mempertimbangkan risiko sebelum bertindak.
+•	U → Emosional, intuitif, tapi sering menutupi perasaan dengan logika.
+•	R → Rasional, tegas, dan suka berpikir sistematis.
+•	O → Butuh koneksi emosional dan kedalaman, meskipun suka tampak cool.
+•	F → Imajinatif, punya sisi kreatif yang tersembunyi.
+•	I → Sensitif dan sangat responsif terhadap suasana hati orang lain.
+•	K → Teguh dan perfeksionis. Sering menyimpan standar tinggi terhadap diri sendiri dan orang lain.
+✨ Karakter Nama:
+Kombinasi ini mencerminkan kepribadian serius, tajam secara logis, tapi diam-diam sangat emosional. Kamu mungkin tidak mudah membuka diri, tapi sangat dalam kalau sudah percaya.
+________________________________________
+🧠 KESIMPULAN PSIKOLOGIS KAMU
+✅ Perilaku Dasar:
+•	Mandiri, berpikiran kuat, dan tidak mudah terpengaruh oleh omongan luar.
+•	Kombinasi antara pemikiran logis dan emosi terpendam.
+•	Bisa jadi tempat bergantung, tapi jarang menggantungkan diri ke siapa pun.
+🔍 Motivasi Tersembunyi:
+•	Ingin merasa berkuasa atas nasib sendiri, bukan cuma ikut arus.
+•	Butuh rasa dihargai karena kualitas dalam, bukan sekadar pencitraan luar.
+•	Ingin bebas bergerak, tapi tetap punya pondasi yang kokoh.
+⚖️ Konflik Batin:
+•	Bertarung antara kontrol dan kebebasan.
+Ada bagian dari dirimu yang ingin stabil, mapan, jelas — tapi juga ada bagian lain yang takut dikekang dan ingin eksplorasi.
+•	Takut terlihat lemah, tapi ingin dipahami.
+Kamu sering menutup emosi karena takut dinilai “lemah”, padahal sebenarnya kamu ingin dimengerti dan dipercaya tanpa harus selalu menjelaskan.
+
+`
+  };
+
+  function revealPersonality() {
+    const name = document.getElementById('nameInput').value.trim().toLowerCase();
+    const result = data[name];
+
+    document.getElementById('result').innerText = result || 'Hmm... energi semesta belum mengenal namamu. Coba lagi, atau mungkin kamu terlalu misterius...';
+  }
+</script>
+
+</body>
+</html>
